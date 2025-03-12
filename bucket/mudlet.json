@@ -14,7 +14,7 @@
         }
     },
     "pre_install": [
-        "Expand-7zipArchive \"$dir\\Mudlet-$version-full.nupkg\" $dir -Removal",
+        "Get-ChildItem \"$dir\\Mudlet_??_$version-full.nupkg\" | ForEach-Object { Expand-7zipArchive $_.FullName $dir -Removal }",
         "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*.*\", \"$dir\\RELEASES\" -Recurse",
         "Move-Item \"$dir\\lib\\net45\\*\" \"$dir\"",
         "Remove-Item \"$dir\\lib\" -Recurse",
